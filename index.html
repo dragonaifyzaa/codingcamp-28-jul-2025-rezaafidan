@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Website</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const cursorOuter = document.createElement('div');
+        const cursorInner = document.createElement('div');
+        cursorOuter.classList.add('cursor-outer');
+        cursorInner.classList.add('cursor-inner');
+        document.body.appendChild(cursorOuter);
+        document.body.appendChild(cursorInner);
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let outX = 0;
+        let outY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          
+          // Inner cursor follows mouse instantly
+          cursorInner.style.left = mouseX - 4 + 'px';
+          cursorInner.style.top = mouseY - 4 + 'px';
+        });
+
+        // Animate outer cursor with smooth following effect
+        function animate() {
+          // Smooth following effect for outer cursor
+          outX += (mouseX - outX - 15) * 0.1;
+          outY += (mouseY - outY - 15) * 0.1;
+          cursorOuter.style.left = outX + 'px';
+          cursorOuter.style.top = outY + 'px';
+          
+          requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Hover effects
+        document.querySelectorAll('a, button, input, textarea').forEach(element => {
+          element.addEventListener('mouseenter', () => {
+            cursorOuter.style.transform = 'scale(1.5)';
+            cursorInner.style.transform = 'scale(1.5)';
+          });
+          
+          element.addEventListener('mouseleave', () => {
+            cursorOuter.style.transform = 'scale(1)';
+            cursorInner.style.transform = 'scale(1)';
+          });
+        });
+      });
+    </script>
+  </head>
+  <body style="cursor: none;">
+
+    <div class="bg-[url('images/bg.jpg')] bg-cover bg-center min-h-screen">
+    <header class="main-header">
+      <div class="logo 
+      rounded-[25%] w-[50px] h-[50px] bg-red-900">
+      </div>
+    <nav>
+          <a class="border rounded-l-lg px-[10px] py-[2px] text-white font-medium" href="#Home">Home</a>
+          <a class="border px-[10px] py-[2px] text-white font-medium" href="#Our Profile">Our Profile</a>
+          <a class="border px-[10px] py-[2px] text-white font-medium" href="#Portfolio">Portfolio</a>
+          <a class="border rounded-r-lg px-[10px] py-[2px] text-white font-medium" href="#Message Us">Message Us</a>
+    </nav>
+    </header>
+
+    <main>
+        <section class="py-[20px] flex justify-center" id="Home">
+            <div class="w-[1366px] h-[512px] bg-gray-500/50 px-[20px] py-[20px] rounded-lg">
+                <h1 class="text_header2">Hi <span id="welcome-username"></span>! Welcome to our website</h1>
+                <p class="text_subheader">Explore our services and portfolio.</p>
+            </div>
+        </section>
+
+        <hr/>
+
+        <section class="py-[20px] flex justify-center" id="Our Profile">
+            <div class="w-[1366px] h-[512px] bg-gray-500/50 px-[20px] py-[20px] rounded-lg">
+                <h2 class="text_header2">Our Profile</h2>
+                <p class="text_subheader mt-4">
+                    Nama : Reza Fahri Afidan <br/>
+                    Status : Pelajar <br/>
+                    email : rezaafidan@gmail.com
+                </p>
+            </div>
+        </section>
+
+        <hr/>
+
+        <section>
+            <div class="py-[20px] flex justify-center" id="Portfolio">
+                <div class="w-[1366px] h-[512px] bg-gray-500/50 px-[20px] py-[20px] rounded-lg">
+                    <h2 class="text_header2">Our Headquarter</h2>
+                    <p class="text_subheader"></p>
+                </div>
+        </section>
+
+        <hr/>
+
+        <section class="py-[20px] flex justify-center" id="Message Us">
+            <div class="w-[1366px] h-[512px] bg-gray-500/50 px-[20px] py-[20px] rounded-lg">
+                <h2 class="text_header2">Message Us</h2>
+                <p class="text_subheader">Feel free to reach out for any inquiries or collaborations.</p>
+                <div>
+                    <div >
+                        <form>
+                            <div class="flex gap-4">
+                                <div class="mt-4">
+                                <label class="label_form" for="name">Name:</label>
+                                <input type="text" id="name" name="name" class="w-full p-2 rounded-lg bg-white/10 backdrop-blur-sm text-white">
+                                </div>
+
+                                <div class="mt-4">
+                                <label class="label_form" for="email">Email:</label>
+                                <input type="email" id="email" name="email" class="w-full p-2 rounded-lg bg-white/10 backdrop-blur-sm text-white">
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <label class="label_form" for="message">Message:</label>
+                                <textarea id="message" name="message" rows="4" class="w-full p-2 rounded-lg bg-white/10 backdrop-blur-sm text-white"></textarea>
+                            </div>
+                            <button type="button" onclick="validateForm()" class="submit_button mt-4">Send Message</button>
+                        </form>
+                    </div>
+
+                    <div class="mt-4 bg-blue-500/20 backdrop-blur-sm p-6 rounded-lg h-fit">
+                        <p id="result-form" class="text-white"></p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Reza's Website. All rights reserved.</p>
+    </footer>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>

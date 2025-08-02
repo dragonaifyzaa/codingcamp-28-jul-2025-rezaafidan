@@ -1,0 +1,127 @@
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px; padding-right: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+nav {
+    display: flex;
+    background-color: rgba(248, 249, 250, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 15px;
+    padding: 8px;
+}
+
+nav a {
+    transition: all 0.3s ease;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+nav a:hover {
+    background-color: rgba(139, 92, 246, 0.5); /* warna ungu dengan opacity */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    border-color: rgba(139, 92, 246, 0.8);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: rgb(139, 92, 246);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a.active {
+    background-color: rgba(139, 92, 246, 0.5);
+    border-color: rgba(139, 92, 246, 0.8);
+}
+
+.logo {
+    background-image: url('../images/logo.png');
+    background-size: cover;
+    background-position: center;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+main {
+    padding-top: 80px; /* Menyesuaikan dengan tinggi navbar */
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    width: 100%;
+    margin-top: auto;
+}
+
+
+.text_header2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.text_subheader {  
+    color: white;
+}
+
+.label_form {
+    color: white;
+}
+
+.submit_button {
+    background-color: #9c1891; /* Green */
+    border-radius: calc(infinity * 1px);
+    color: rgb(243, 243, 243);
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+.cursor-outer {
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s;
+}
+
+.cursor-inner {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+}
